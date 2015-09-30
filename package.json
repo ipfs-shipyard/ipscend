@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/diasdavid/ipsurge",
   "dependencies": {
+    "asking": "^0.1.2",
     "ronin": "^0.3.11"
   }
 }
