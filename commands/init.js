@@ -3,7 +3,7 @@ var fs = require('fs')
 var ask = require('asking').ask
 
 module.exports = Command.extend({
-  desc: 'This command adds application',
+  desc: 'Initialize a ipsurge project',
 
   run: function (name) {
     try {
