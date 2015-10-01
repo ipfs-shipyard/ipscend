@@ -3,7 +3,7 @@ var fs = require('fs')
 var path = require('path')
 
 module.exports = Command.extend({
-  desc: 'Check each version publishedPublish your project',
+  desc: 'Check each version published',
 
   run: function (name) {
     try {
