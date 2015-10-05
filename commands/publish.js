@@ -20,9 +20,9 @@ module.exports = Command.extend({
       // TODO check if daemon is running
       var ipfs = ipfsAPI('localhost', '5001')
 
-      console.log('project:', config.project)
+      console.log('project:', config.path)
 
-      ipfs.add(config.project, { recursive: true }, function (err, res) {
+      ipfs.add(config.path, { recursive: true }, function (err, res) {
         if (err || !res) {
           return console.error('err', err)
         }

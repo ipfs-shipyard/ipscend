@@ -22,7 +22,7 @@ module.exports = Command.extend({
         if (err) {
           return console.log(err) // TODO Handle this err properly
         }
-        config['project'] = path
+        config['path'] = path
         var fd = fs.openSync(process.cwd() + '/ipsurge.json', 'w')
         fs.writeSync(fd, JSON.stringify(config, null, '  '), 0, 'utf-8')
       })
