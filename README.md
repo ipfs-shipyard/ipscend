@@ -5,7 +5,42 @@ ipsurge
 
 > Quick and simple deploy tool to host Native Web Applications and Static Web Pages in IPFS
 
+## Usage
+
+Install via npm
+
+```
+$ npm install ipsurge --global
+```
+
+Run the CLI to show the available commands
+
+```
+$ ipsurge
+Usage: ipsurge COMMAND [OPTIONS]
+
+Available commands:
+
+init      Initialize a ipsurge project
+publish   Publish your project
+versions  Check each version published
+```
+
+### commands
+
+#### ipsurge init
+
+#### ipsurge publish
+
+> **make sure to have a local ipfs daemon running**
+
+#### ipsurge versions
+
 ## Use IPFS to host your webpage (includes cool DNS trick!)
+
+### 1. Set up a IPFS node in a remote machine
+
+### 2. 
 
 ## ipsurge hosted service
 

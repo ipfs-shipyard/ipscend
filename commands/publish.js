@@ -20,10 +20,14 @@ module.exports = Command.extend({
       // TODO check if daemon is running
       var ipfs = ipfsAPI('localhost', '5001')
 
+      console.log('project:', config.project)
+
       ipfs.add(config.project, { recursive: true }, function (err, res) {
         if (err || !res) {
           return console.error('err', err)
         }
+
+        console.log(res)
 
         var version = {
           hash: res[res.length - 1].Hash,
