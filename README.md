@@ -21,7 +21,9 @@ Usage: ipsurge COMMAND [OPTIONS]
 
 Available commands:
 
+browse    Open your application in a browser
 init      Initialize a ipsurge project
+preview   Preview your application through a collection of snapshots
 publish   Publish your project
 versions  Check each version published
 ```
@@ -35,6 +37,11 @@ versions  Check each version published
 > **make sure to have a local ipfs daemon running**
 
 #### ipsurge versions
+
+#### ipsurge publish
+
+#### ipsurge browse
+
 
 ## Use IPFS to host your webpage (includes cool DNS trick!)
 

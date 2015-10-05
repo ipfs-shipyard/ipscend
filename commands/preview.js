@@ -3,6 +3,7 @@ var fs = require('fs')
 var path = require('path')
 var webshot = require('webshot')
 var ipfsAPI = require('ipfs-api')
+var open = require('open')
 
 module.exports = Command.extend({
   desc: 'Preview your application through a collection of snapshots',
@@ -25,6 +26,11 @@ module.exports = Command.extend({
       var config = JSON.parse(fs.readFileSync(configPath))
       if (config.versions.length === 0) {
         return console.log('You need to publish at least once with <ipsurge publish>')
+      }
+
+      if (!gen && !gif) {
+        console.log('preview window under dev')
+        return open('https://github.com/diasdavid/ipsurge-preview')
       }
 
       var ipfs = ipfsAPI('localhost', '5001')
