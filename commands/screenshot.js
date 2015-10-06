@@ -19,7 +19,7 @@ module.exports = Command.extend({
       fs.statSync(configPath)
       snapshot()
     } catch (err) {
-      console.log(err)
+      // console.log(err)
       console.log('Project must be initiated first, run `ipsurge init`')
     }
 

@@ -21,30 +21,43 @@ Usage: ipsurge COMMAND [OPTIONS]
 
 Available commands:
 
-browse    Open your application in a browser
-init      Initialize a ipsurge project
-preview   Preview your application through a collection of snapshots
-publish   Publish your project
-versions  Check each version published
+browse      Open your application in a browser
+init        Initialize a ipsurge project
+preview     Preview your application before you publish it
+publish     Publish your project
+screenshot  View or generate screenshots for your application
+versions    Check each version published
 ```
 
 ### commands
 
-#### ipsurge init
+#### `ipsurge init`
 
-#### ipsurge publish
+Initializes your project. Asks for a folder of where the web application will be available and stores a ipsurge.json object in your current path to store all the meta data it generates, such as versions published and screenshots taken.
 
-> **You have to have a local IPFS node running in order to publish**, check below hot to get your local IPFS node running
+#### `ipsurge publish`
 
-#### ipsurge versions
+Publishes the current state of your application to IPFS and stores a reference to it.
 
-#### ipsurge publish
+**note:** You have to have a local IPFS node running in order to publish, check below hot to get your local IPFS node running
 
-#### ipsurge browse
+#### `ipsurge versions`
 
-#### ipsurge preview
+Prints out the published versions for the app and their respective timestamp
 
-note: `API_ORIGIN=*`
+#### `ipsurge browse`
+
+Opens in the browser the last version published of your application.
+
+#### `ipsurge screenshot`
+
+Opens a screenshot preview of all the published versions of your app. In order to generate the screenshots, you must first run `ipsurge screenshot --gen`
+
+**note:** In order to use this feature, you must set `API_ORIGIN=*` as an environment variable before running your IPFS node
+
+#### `ipsurge preview`
+
+Serves your application on a local static file server to try it out before you feel ready to publish it.
 
 ## How to get an IPFS node running in your local machine
 
