@@ -9,11 +9,10 @@ module.exports = Command.extend({
   desc: 'View or generate screenshots for your application',
 
   options: {
-    gen: 'boolean',
-    gif: 'boolean'
+    gen: 'boolean'
   },
 
-  run: function (gen, gif, name) {
+  run: function (gen, name) {
     try {
       var configPath = path.resolve(process.cwd() + '/ipsurge.json')
       console.log(configPath)
