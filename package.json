@@ -1,5 +1,5 @@
 {
-  "name": "ipsurge",
+  "name": "ipscend",
   "version": "0.0.2",
   "description": "Quick and simple deploy tool to host Native Web Applications and Static Web Pages in IPFS",
   "bin": "bin.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/diasdavid/ipsurge.git"
+    "url": "https://github.com/diasdavid/ipscend.git"
   },
   "keywords": [
     "IPFS"
@@ -16,9 +16,9 @@
   "author": "David Dias <daviddias@ipfs.io>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/diasdavid/ipsurge/issues"
+    "url": "https://github.com/diasdavid/ipscend/issues"
   },
-  "homepage": "https://github.com/diasdavid/ipsurge",
+  "homepage": "https://github.com/diasdavid/ipscend",
   "dependencies": {
     "asking": "^0.1.2",
     "ipfs-api": "^2.3.3",

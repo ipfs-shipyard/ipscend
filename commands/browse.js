@@ -8,7 +8,7 @@ module.exports = Command.extend({
 
   run: function (name) {
     try {
-      var configPath = path.resolve(process.cwd() + '/ipsurge.json')
+      var configPath = path.resolve(process.cwd() + '/ipscend.json')
       fs.statSync(configPath)
       browse()
     } catch (err) {

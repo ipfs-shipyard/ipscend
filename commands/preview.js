@@ -17,12 +17,12 @@ module.exports = Command.extend({
 
   run: function (port, name) {
     try {
-      var configPath = path.resolve(process.cwd() + '/ipsurge.json')
+      var configPath = path.resolve(process.cwd() + '/ipscend.json')
       fs.statSync(configPath)
       preview()
     } catch (err) {
       console.log(err)
-      console.log('Project must be initiated first, run `ipsurge init`')
+      console.log('Project must be initiated first, run `ipscend init`')
     }
 
     function preview () {
