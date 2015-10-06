@@ -15,7 +15,6 @@ module.exports = Command.extend({
   run: function (gen, name) {
     try {
       var configPath = path.resolve(process.cwd() + '/ipsurge.json')
-      console.log(configPath)
       fs.statSync(configPath)
       snapshot()
     } catch (err) {
@@ -49,7 +48,12 @@ module.exports = Command.extend({
         config.versions.forEach(function (version) {
           if (!version.snapshot) {
             webshot('http://localhost:8080/ipfs/' + version.hash,
-                '/tmp/' + version.hash + '.png', function (err) {
+                '/tmp/' + version.hash + '.png', {
+                  shotSize: {
+                    width: 'all',
+                    height: 'all'
+                  }
+                }, function (err) {
               if (err) {
                 return console.log(err)
               }

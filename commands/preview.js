@@ -18,7 +18,6 @@ module.exports = Command.extend({
   run: function (port, name) {
     try {
       var configPath = path.resolve(process.cwd() + '/ipsurge.json')
-      console.log(configPath)
       fs.statSync(configPath)
       preview()
     } catch (err) {
