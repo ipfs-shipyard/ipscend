@@ -16,9 +16,11 @@ module.exports = Command.extend({
   run: function (gen, gif, name) {
     try {
       var configPath = path.resolve(process.cwd() + '/ipsurge.json')
+      console.log(configPath)
       fs.statSync(configPath)
       preview()
     } catch (err) {
+      console.log(err)
       console.log('Project must be initiated first, run `ipsurge init`')
     }
 
@@ -28,12 +30,20 @@ module.exports = Command.extend({
         return console.log('You need to publish at least once with <ipsurge publish>')
       }
 
-      if (!gen && !gif) {
-        console.log('preview window under dev')
-        return open('https://github.com/diasdavid/ipsurge-preview')
-      }
-
       var ipfs = ipfsAPI('localhost', '5001')
+
+      if (!gen) {
+        ipfs.add(new Buffer(JSON.stringify(config.versions)), function (err, res) {
+          if (err || !res) {
+            return console.error('err', err)
+          }
+          var previewAppHash = 'QmSoJahy5TXavAA19t23tTxtSZ2qoRE9uXwigJTZSVNTTw'
+          var versionsHash = res[0].Hash
+          var base = 'http://localhost:8080/ipfs/'
+          open(base + previewAppHash + '/#' + versionsHash)
+        })
+        return
+      }
 
       if (gen) {
         var len = config.versions.length
