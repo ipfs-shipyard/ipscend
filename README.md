@@ -51,7 +51,7 @@ note: `API_ORIGIN=*`
 There are two best ways to run a IPFS node in your personal computer:
 
 - [Using the IPFS application based on electron](https://github.com/ipfs/electron-app)
-- [Installing the go-ipfs node in your machine](http://ipfs.io/install)
+- [Installing the go-ipfs node in your machine](http://ipfs.io/docs/install)
 
 ## Use IPFS to host your webpage using a standard domain (includes cool DNS trick!)
 
@@ -63,7 +63,19 @@ To make this work, simply:
 
 - 1. Publish your application using `ipsurge publish`
 - 2. Save the hash returned
-- 3. Go into your DNS provider and add a CNAME record of yourdomain.com pointing to ipfs.io and a TXT record with dnslink=<hash returned in step 2>
+- 3. Pick one of the public IPFS nodes IP addresses
+```
+$ dig +short ipfs.io
+178.62.61.185
+178.62.158.247
+104.236.76.40
+104.236.151.122
+104.236.176.52
+104.236.179.241
+128.199.219.111
+162.243.248.213
+```
+- 4. Go into your DNS provider and add a A record of yourdomain.com pointing to ipfs.io and a TXT record with dnslink=<hash returned in step 2>
 - 4. Wait a little bit for DNS to propagate
 - 5. open yourdomain.com and see that your page was loaded! 
 
