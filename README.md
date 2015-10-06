@@ -34,7 +34,7 @@ versions  Check each version published
 
 #### ipsurge publish
 
-> **make sure to have a local ipfs daemon running**
+> **You have to have a local IPFS node running in order to publish**, check below hot to get your local IPFS node running
 
 #### ipsurge versions
 
@@ -42,15 +42,31 @@ versions  Check each version published
 
 #### ipsurge browse
 
+#### ipsurge preview
 
-## Use IPFS to host your webpage (includes cool DNS trick!)
+note: `API_ORIGIN=*`
 
-### 1. Set up a IPFS node in a remote machine
+## How to get an IPFS node running in your local machine
 
-### 2. 
+There are two best ways to run a IPFS node in your personal computer:
 
-## ipsurge hosted service
+- [Using the IPFS application based on electron](https://github.com/ipfs/electron-app)
+- [Installing the go-ipfs node in your machine](http://ipfs.io/install)
 
-> [`soon..`](http://static.fjcdn.com/pictures/Soon_15db89_2831712.jpg)
+## Use IPFS to host your webpage using a standard domain (includes cool DNS trick!)
 
-We are planning to have a ipsurge hosted service that you could use directly, so that you don't have to configure your own IPFS node, and simple do `ipsurge publish --remote` to get your application hosted (with the possibility of having your own domain). Still under development, but if this idea sounds interesting, let us know on IRC freenode #IPFS channel or on the issues of this project!
+If you are looking into having your application accesible through `youdomain.com`, instead of referencing it by a `/ipfs/hash`, we have a solution for you.
+
+Every IPFS node HTTP interface checks the host header when it receives a request from a browser, then it performs a DNS lookup for a TXT Record, looking if there is any MerkleLink available, if there is, it will perform the lookup, cache that path and serve it as if it was a static webserver.
+
+To make this work, simply:
+
+- 1. Publish your application using `ipsurge publish`
+- 2. Save the hash returned
+- 3. Go into your DNS provider and add a CNAME record of yourdomain.com pointing to ipfs.io and a TXT record with dnslink=<hash returned in step 2>
+- 4. Wait a little bit for DNS to propagate
+- 5. open yourdomain.com and see that your page was loaded! 
+
+Voilá, your page is now cached and being served by IPFS
+
+note: you can also host your own IPFS nodes and use the same DNS trick.
