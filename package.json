@@ -1,6 +1,6 @@
 {
   "name": "ipscend",
-  "version": "0.1.0",
+  "version": "0.0.2",
   "description": "Quick and simple deploy tool to host Native Web Applications and Static Web Pages in IPFS",
   "bin": "bin.js",
   "scripts": {
