@@ -88,7 +88,7 @@ $ dig +short ipfs.io
 128.199.219.111
 162.243.248.213
 ```
-- 4. Go into your DNS provider and add a A record of yourdomain.com pointing to ipfs.io and a TXT record with dnslink=<hash returned in step 2>
+- 4. Go into your DNS provider and add a A record for each of the ipfs.io IPs available to yourdomain.com (just one would do fine as well) and a TXT record with dnslink=<hash returned in step 2>
 - 4. Wait a little bit for DNS to propagate
 - 5. open yourdomain.com and see that your page was loaded! 
 
