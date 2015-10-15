@@ -76,33 +76,24 @@ To make this work, simply:
 
 1. Publish your application using `ipscend publish`.
 2. Save the returned hash.
-3. Find the IPFS ip addresses: Example: 
+3. Find the IPFS ip addresses using `$ dig ipfs.io`. Example: 
 	
 	```sh
 	$ dig +short ipfs.io
 	178.62.61.185
 	178.62.158.247
 	104.236.76.40
-	104.236.151.122
-	104.236.176.52
-	104.236.179.241
-	128.199.219.111
-	162.243.248.213
+	...
 	```
 4. Decide which domain or subdomain will host your IPFS application. We're going to use `ipfs.yourdomain.com`
-5. In the DNS administration for your domain, add an A record for each of the ipfs.io IPs addresses. 
-	Example:
+5. In the DNS administration for your domain, add an A record for each of the ipfs.io IPs addresses. Example:
 	```
 	yourdomain.com
 
 	ipfs     A     178.62.61.185
 	ipfs     A     178.62.158.247
 	ipfs     A     104.236.76.40
-	ipfs     A     104.236.151.122
-	ipfs     A     104.236.176.52
-	ipfs     A     104.236.179.241
-	ipfs     A     128.199.219.111
-	ipfs     A     162.243.248.213
+	...
 	```
 	If you're using the root domain, your DNS rules should look like:
 	```
@@ -110,6 +101,7 @@ To make this work, simply:
 
 	@        A     178.62.61.185
 	@        A     178.62.158.247
+	@        A     104.236.76.40
 	...
 	```
 6. Next, the cool DNS trick. Add a TXT record with the hash of your IPFS application.
