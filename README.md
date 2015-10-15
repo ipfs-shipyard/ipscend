@@ -74,23 +74,53 @@ Every IPFS node HTTP interface checks the host header when it receives a request
 
 To make this work, simply:
 
-- 1. Publish your application using `ipscend publish`.
-- 2. Save the returned hash.
-- 3. Pick one of the public IPFS nodes IP addresses.
-```sh
-$ dig +short ipfs.io
-178.62.61.185
-178.62.158.247
-104.236.76.40
-104.236.151.122
-104.236.176.52
-104.236.179.241
-128.199.219.111
-162.243.248.213
-```
-- 4. Go into your DNS provider and add an A record for each of the ipfs.io IPs available to `yourdomain.com` (just one would do fine as well) and a TXT record with `dnslink=<hash returned in step 2>`.
-- 4. Wait a little bit for DNS to propagate.
-- 5. Open yourdomain.com and see that your page was loaded!
+1. Publish your application using `ipscend publish`.
+2. Save the returned hash.
+3. Find the IPFS ip addresses: Example: 
+	
+	```sh
+	$ dig +short ipfs.io
+	178.62.61.185
+	178.62.158.247
+	104.236.76.40
+	104.236.151.122
+	104.236.176.52
+	104.236.179.241
+	128.199.219.111
+	162.243.248.213
+	```
+4. Decide which domain or subdomain will host your IPFS application. We're going to use `ipfs.yourdomain.com`
+5. In the DNS administration for your domain, add an A record for each of the ipfs.io IPs addresses. 
+	Example:
+	```
+	yourdomain.com
+
+	ipfs     A     178.62.61.185
+	ipfs     A     178.62.158.247
+	ipfs     A     104.236.76.40
+	ipfs     A     104.236.151.122
+	ipfs     A     104.236.176.52
+	ipfs     A     104.236.179.241
+	ipfs     A     128.199.219.111
+	ipfs     A     162.243.248.213
+	```
+	If you're using the root domain, your DNS rules should look like:
+	```
+	yourdomain.com
+
+	@        A     178.62.61.185
+	@        A     178.62.158.247
+	...
+	```
+6. Next, the cool DNS trick. Add a TXT record with the hash of your IPFS application.
+	Example:
+	```
+	yourdomain.com
+
+	ipfs     TXT     dnslink=/ipfs/QmXkbSsxHZZniJ1rd5y7cJsDYyRKkcYeoEsN7p4PUq799L
+	```
+7. Wait a little bit for DNS to propagate.
+8. Open `ipfs.yourdomain.com` and see that your page was loaded!
 
 Voilá, your page is now cached and is being served by IPFS.
 
