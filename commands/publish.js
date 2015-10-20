@@ -20,7 +20,7 @@ module.exports = Command.extend({
       // TODO check if daemon is running
       var ipfs = ipfsAPI('localhost', '5001')
 
-      ipfs.add(config.path, { recursive: true }, function (err, res) {
+      ipfs.add(config.path, { recursive: true, 'stream-channels': false }, function (err, res) {
         if (err || !res) {
           return console.error('err', err)
         }
@@ -29,6 +29,7 @@ module.exports = Command.extend({
           hash: res[res.length - 1].Hash,
           timestamp: new Date()
         }
+        console.log(version)
 
         console.log('published', config.path, version.hash)
 
