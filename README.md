@@ -117,3 +117,13 @@ To make this work, simply:
 Voilá, your page is now cached and is being served by IPFS.
 
 **Note: You can also host your own IPFS nodes and use the same DNS trick.**
+
+### Automate the DNS TXT Record update with `dnslink` tool
+
+`dnslink-deploy` is a simple tool that lets you update your TXT records to the latest hash, if you happen to be using Digital Ocean's nameservers. To update it using the tool, simply run:
+
+```
+dnslink-deploy -d yourDomain -r @ -p /ipfs/QmeQT76CZLBhSxsLfSMyQjKn74UZski4iQSq9bW7YZy6x8
+```
+
+To learn more about how the tool works, visit https://github.com/ipfs/dnslink-deploy and to learn how to set up your domain with Digital Ocean's name servers, go to: https://www.digitalocean.com/community/tutorials/how-to-point-to-digitalocean-nameservers-from-common-domain-registrars
