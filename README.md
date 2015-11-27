@@ -53,7 +53,7 @@ Publishes the current state of your application to IPFS and stores a reference t
 
 Opens a screenshot preview of all the published versions of your app. In order to generate the screenshots, you must first run `ipscend screenshot --gen`.
 
-![](https://cloud.githubusercontent.com/assets/49499/11344725/3e54ffc2-9213-11e5-8c87-835a81d05a64.gif)
+![](http://zippy.gfycat.com/TameDampKob.gif)
 
 #### `ipscend versions`
 
