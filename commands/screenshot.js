@@ -35,8 +35,7 @@ module.exports = Command.extend({
           if (err || !res) {
             return console.error('err', err)
           }
-          var previewAppHash = 'Qmcjd2vT5xqJQa5y8i4WEDVPJvgmD4q2t1JQ16mpVbCWNS'
-          // var previewAppHash = 'QmaJtFXp1ft4hLznscpRjEufZLTT8YuFn82vWFPeT2rprC'
+          var previewAppHash = 'QmYH5SM9D2qhJXb6GCQ3AJbqVwecGoAxyjG25j9AskKmdc'
           var versionsHash = res[0].Hash
           var base = 'http://localhost:8080/ipfs/'
           open(base + previewAppHash + '/#' + versionsHash)
