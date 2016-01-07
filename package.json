@@ -4,7 +4,7 @@
   "description": "Quick and simple deploy tool to host Native Web Applications and Static Web Pages in IPFS",
   "bin": "bin.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,8 @@
     "open": "0.0.5",
     "ronin": "^0.3.11",
     "webshot": "^0.16.0"
+  },
+  "devDependencies": {
+    "standard": "^5.4.1"
   }
 }
