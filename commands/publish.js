@@ -26,7 +26,7 @@ module.exports = Command.extend({
         }
 
         var version = {
-          hash: res[res.length - 1].Hash,
+          hash: res[res.length - 2].Hash,
           timestamp: new Date()
         }
         console.log(version)
