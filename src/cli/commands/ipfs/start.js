@@ -19,7 +19,9 @@ module.exports = Command.extend({
 
     ipfsd.disposable({
       repoPath: repoPath,
-      init: init
+      init: init,
+      apiAddr: '/ip4/127.0.0.1/tcp/5001',
+      gatewayAddr: '/ip4/127.0.0.1/tcp/8080'
     }, (err, node) => {
       if (err) {
         return console.log(err)
