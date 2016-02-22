@@ -1,8 +1,10 @@
 {
   "name": "ipscend",
   "version": "0.1.9",
-  "description": "Quick and simple deploy tool to host Native Web Applications and Static Web Pages in IPFS",
-  "bin": "bin.js",
+  "description": "Web Application publishing, simple and distributed with IPFS ",
+  "bin": {
+    "ipscend": "src/cli/bin.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,7 +23,8 @@
   "homepage": "https://github.com/diasdavid/ipscend",
   "dependencies": {
     "asking": "^0.1.2",
-    "ipfs-api": "^2.9.11",
+    "ipfs-api": "^2.13.1",
+    "ipfsd-ctl": "^0.8.1",
     "ndjson-aggregator": "^0.1.2",
     "node-static": "^0.7.7",
     "open": "0.0.5",
