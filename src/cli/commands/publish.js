@@ -32,7 +32,7 @@ module.exports = Command.extend({
         })[0]
 
         if (duplicate) {
-          console.log('this version (' + duplicate.hash + ') was already published on', duplicate.timestamp)
+          console.log('This version (' + duplicate.hash + ') has already been published on:', duplicate.timestamp)
           return
         }
 
@@ -40,9 +40,11 @@ module.exports = Command.extend({
           hash: hash,
           timestamp: new Date()
         }
-        console.log(version)
 
-        console.log('published', config.path, version.hash)
+        console.log('Published', config.path, 'with the following hash:', version.hash)
+        console.log('You can access it through your local node or through a public IPFS gateway:')
+        console.log('http://localhost:8080/ipfs/' + version.hash)
+        console.log('http://ipfs.io/ipfs/' + version.hash)
 
         config.versions.push(version)
 
