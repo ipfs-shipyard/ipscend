@@ -23,6 +23,7 @@ Available commands:
 
 browse      Open your application in a browser
 init        Initialize a ipscend project
+ipfs start  Start your a local IPFS node
 preview     Preview your application before you publish it
 publish     Publish your project
 screenshot  View or generate screenshots for your application
@@ -38,6 +39,10 @@ Opens the last published version of your application in the browser.
 #### `ipscend init`
 
 Initializes your project. Asks for the folder where the web application will be available and stores an `ipscend.json` object in your current path to store all the metadata it generates, such as published versions and taken screenshots.
+
+#### `ipscend ipfs start`
+
+Start and init an IPFS node (in case you don't want to install and run IPFS yourself)
 
 #### `ipscend preview`
 
@@ -62,13 +67,6 @@ Opens a screenshot preview of all the published versions of your app. In order t
 Prints out the published versions for the app and its respective timestamp.
 
 **Note:** In order to use this feature, you must set `API_ORIGIN=*` as an environment variable before running your IPFS node.
-
-## How to get an IPFS node running in your local machine
-
-There are two best ways to run an IPFS node on your personal computer:
-
-- [Using the IPFS application based on electron](https://github.com/ipfs/electron-app)
-- [Installing the go-ipfs node in your machine](http://ipfs.io/docs/install)
 
 ## Use IPFS to host your webpage using a standard domain (includes cool DNS trick!)
 
