@@ -55,6 +55,8 @@ Opens a screenshot preview of all the published versions of your app. In order t
 
 ![](http://zippy.gfycat.com/TameDampKob.gif)
 
+**Note:** The webapp used for this is [ipscend-screenshot-visualizer](https://github.com/diasdavid/ipscend-screenshot-visualizer).
+
 #### `ipscend versions`
 
 Prints out the published versions for the app and its respective timestamp.
