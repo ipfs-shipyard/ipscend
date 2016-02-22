@@ -6,21 +6,38 @@ var open = require('open')
 module.exports = Command.extend({
   desc: 'Open your application in a browser',
 
-  run: function (name) {
+  options: {
+    version: 'string'
+  },
+
+  run: function (version, name) {
+    if (version) {
+      return browse(version)
+    }
+
     try {
       var configPath = path.resolve(process.cwd() + '/ipscend.json')
       fs.statSync(configPath)
-      browse()
+      browse(lastVersion())
     } catch (err) {
       console.log('Project must be initiated first, run `ipscend init`')
     }
 
-    function browse () {
+    function lastVersion () {
       var config = JSON.parse(fs.readFileSync(configPath))
       if (config.versions.length === 0) {
-        return console.log('You need to publish at least once with <ipscend publish>')
+        console.log('You need to publish at least once with <ipscend publish>')
+        return
       }
-      var url = 'http://localhost:8080/ipfs/' + config.versions[config.versions.length - 1].hash
+      return config.versions[config.versions.length - 1].hash
+    }
+
+    function browse (version) {
+      if (!version) {
+        return
+      }
+
+      var url = 'http://localhost:8080/ipfs/' + version
       open(url)
     }
   }
