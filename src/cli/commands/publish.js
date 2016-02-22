@@ -25,8 +25,19 @@ module.exports = Command.extend({
           return console.error('err', err)
         }
 
+        var hash = res[res.length - 2].Hash
+
+        var duplicate = config.versions.filter(function (v) {
+          return v.hash === hash
+        })[0]
+
+        if (duplicate) {
+          console.log('this version (' + duplicate.hash + ') was already published on', duplicate.timestamp)
+          return
+        }
+
         var version = {
-          hash: res[res.length - 1].Hash,
+          hash: hash,
           timestamp: new Date()
         }
         console.log(version)
