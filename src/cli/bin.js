@@ -4,6 +4,6 @@ var ronin = require('ronin')
 
 var cli = ronin(__dirname)
 
-cli.autoupdate(function () {
-  cli.run()
-})
+// cli.autoupdate(() => {
+cli.run()
+// })
