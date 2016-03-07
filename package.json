@@ -37,6 +37,6 @@
   },
   "devDependencies": {
     "pre-commit": "^1.1.2",
-    "standard": "^5.4.1"
+    "standard": "^6.0.8"
   }
 }
