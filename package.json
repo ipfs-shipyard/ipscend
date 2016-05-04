@@ -28,7 +28,7 @@
   "dependencies": {
     "asking": "^0.1.2",
     "ipfs-api": "^3.0.1",
-    "ipfsd-ctl": "^0.8.3",
+    "ipfsd-ctl": "^0.9.1",
     "ndjson-aggregator": "^0.1.2",
     "node-static": "^0.7.7",
     "open": "0.0.5",
