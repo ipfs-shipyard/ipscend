@@ -10,22 +10,24 @@ module.exports = Command.extend({
     try {
       var configPath = path.resolve(process.cwd() + '/ipscend.json')
       fs.statSync(configPath)
-      publish()
     } catch (err) {
       console.log('Project must be initiated first, run `ipscend init`')
     }
+
+    publish()
 
     function publish () {
       var config = JSON.parse(fs.readFileSync(configPath))
       // TODO check if daemon is running
       var ipfs = ipfsAPI('localhost', '5001')
 
-      ipfs.add(config.path, { recursive: true, 'stream-channels': false }, function (err, res) {
+      ipfs.util.addFiles(config.path, { recursive: true }, function (err, res) {
         if (err || !res) {
           return console.error('err', err)
         }
 
-        var hash = res[res.length - 2].Hash
+        var node = res[res.length - 1].node.toJSON()
+        var hash = node.Hash
 
         var duplicate = config.versions.filter(function (v) {
           return v.hash === hash
