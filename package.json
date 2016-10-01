@@ -30,7 +30,7 @@
     "ipfs-api": "^3.0.1",
     "ipfsd-ctl": "^0.15.0",
     "ndjson-aggregator": "^0.1.2",
-    "node-static": "^0.7.7",
+    "node-static": "^0.7.9",
     "open": "0.0.5",
     "ronin": "^0.3.11",
     "webshot": "^0.16.0"
