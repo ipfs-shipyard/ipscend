@@ -27,7 +27,7 @@
   "homepage": "https://github.com/diasdavid/ipscend",
   "dependencies": {
     "asking": "^0.1.2",
-    "ipfs-api": "^3.0.1",
+    "ipfs-api": "^11.0.1",
     "ipfsd-ctl": "^0.17.0",
     "ndjson-aggregator": "^0.1.2",
     "node-static": "^0.7.7",
