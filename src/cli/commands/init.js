@@ -1,3 +1,5 @@
+'use strict'
+
 var Command = require('ronin').Command
 var fs = require('fs')
 var ask = require('asking').ask
