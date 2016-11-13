@@ -43,5 +43,13 @@
   "devDependencies": {
     "aegir": "^9.1.1",
     "pre-commit": "^1.1.3"
-  }
+  },
+  "contributors": [
+    "David Dias <daviddias.p@gmail.com>",
+    "Francisco Baio Dias <xicombd@gmail.com>",
+    "Isaac Lewis <ikelewis678@gmail.com>",
+    "Richard Littauer <richard.littauer@gmail.com>",
+    "Stephen Whitmore <stephen.whitmore@gmail.com>",
+    "greenkeeperio-bot <support@greenkeeper.io>"
+  ]
 }
