@@ -1,3 +1,5 @@
+'use strict'
+
 const fs = require('fs')
 const ipfsd = require('ipfsd-ctl')
 const os = require('os')

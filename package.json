@@ -6,8 +6,13 @@
     "ipscend": "src/cli/bin.js"
   },
   "scripts": {
-    "lint": "standard",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "aegir-lint",
+    "test": "aegir-test --env node",
+    "release": "aegir-release --env no-build",
+    "release-minor": "aegir-release --type minor --env no-build",
+    "release-major": "aegir-release --type major --env no-build",
+    "coverage": "aegir-coverage",
+    "coverage-publish": "aegir-coverage publish"
   },
   "pre-commit": [
     "lint"
@@ -27,16 +32,16 @@
   "homepage": "https://github.com/diasdavid/ipscend",
   "dependencies": {
     "asking": "^0.1.2",
-    "ipfs-api": "^11.0.1",
+    "ipfs-api": "^11.1.0",
     "ipfsd-ctl": "^0.17.0",
     "ndjson-aggregator": "^0.1.2",
-    "node-static": "^0.7.7",
+    "node-static": "^0.7.9",
     "open": "0.0.5",
     "ronin": "^0.3.11",
-    "webshot": "^0.16.0"
+    "webshot": "^0.18.0"
   },
   "devDependencies": {
-    "pre-commit": "^1.1.2",
-    "standard": "^8.4.0"
+    "aegir": "^9.1.1",
+    "pre-commit": "^1.1.3"
   }
 }
