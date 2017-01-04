@@ -33,7 +33,7 @@
   "dependencies": {
     "asking": "^0.1.2",
     "ipfs-api": "^12.0.3",
-    "ipfsd-ctl": "^0.17.0",
+    "ipfsd-ctl": "^0.18.1",
     "ndjson-aggregator": "^0.1.2",
     "node-static": "^0.7.9",
     "open": "0.0.5",
