@@ -1,9 +1,10 @@
 {
   "name": "ipscend",
   "version": "0.4.1",
-  "description": "Web Application publishing, simple and distributed with IPFS ",
+  "description": "Web Application publishing made simple and distributed with IPFS ",
   "bin": {
-    "ipscend": "src/cli/bin.js"
+    "ipscend": "src/cli/bin.js",
+    "lch": "src/cli/bin.js"
   },
   "scripts": {
     "lint": "aegir-lint",
@@ -32,8 +33,8 @@
   "homepage": "https://github.com/diasdavid/ipscend",
   "dependencies": {
     "asking": "^0.1.2",
-    "ipfs-api": "^12.0.3",
-    "ipfsd-ctl": "^0.17.0",
+    "ipfs-api": "^14.0.2",
+    "ipfsd-ctl": "^0.21.0",
     "ndjson-aggregator": "^0.1.2",
     "node-static": "^0.7.9",
     "open": "0.0.5",
@@ -41,8 +42,8 @@
     "webshot": "^0.18.0"
   },
   "devDependencies": {
-    "aegir": "^9.1.1",
-    "pre-commit": "^1.1.3"
+    "aegir": "^11.0.2",
+    "pre-commit": "^1.2.2"
   },
   "contributors": [
     "David Dias <daviddias.p@gmail.com>",
