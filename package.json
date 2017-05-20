@@ -1,6 +1,6 @@
 {
   "name": "ipscend",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Web Application publishing made simple and distributed with IPFS ",
   "bin": {
     "ipscend": "src/cli/bin.js",
