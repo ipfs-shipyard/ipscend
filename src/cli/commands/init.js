@@ -17,6 +17,12 @@ module.exports = Command.extend({
 
     function bootstrap () {
       var config = {
+        provider:{
+          host: 'ipfs.infura.io',
+          __host: 'localhost',
+          port: '5001',
+          opts: { protocol:'https' }
+        },
         versions: []
       }
       console.log('This utility will walk you through creating a ipscend.json file.')

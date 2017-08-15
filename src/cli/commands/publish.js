@@ -20,7 +20,12 @@ module.exports = Command.extend({
 
     function publish () {
       const config = require(configPath)
-      const ipfs = ipfsAPI('localhost', '5001')
+
+      let host = config.provider.host || 'ipfs.infura.io'
+      let port = config.provider.port || '5001'
+      let opts = config.provider.opts || { protocol:'https' }
+
+      const ipfs = ipfsAPI(host, port, opts)
 
       ipfs.util.addFromFs(config.path, {
         recursive: true,
@@ -30,9 +35,17 @@ module.exports = Command.extend({
           return console.error('err', err)
         }
 
+        console.log()
+        console.log('Uploaded files:')
         console.log(res)
-
-        const hash = res[res.length - 2].hash
+        console.log()
+        console.log()
+        let hash = ''
+        for(let k in res){
+          if (res[k].path==config.path) {
+            hash = res[k].hash
+          }
+        }
 
         const duplicate = config.versions.filter(function (v) {
           return v.hash === hash
@@ -40,6 +53,8 @@ module.exports = Command.extend({
 
         if (duplicate) {
           console.log('This version (' + duplicate.hash + ') has already been published on:', duplicate.timestamp)
+          console.log('You can access it by url http://ipfs.io/ipfs/' + duplicate.hash)
+          console.log()
           return
         }
 
@@ -50,8 +65,13 @@ module.exports = Command.extend({
 
         console.log('Published', config.path, 'with the following hash:', version.hash)
         console.log('You can access it through your local node or through a public IPFS gateway:')
-        console.log('http://localhost:8080/ipfs/' + version.hash)
+
+        if (config.provider.host=='localhost') {
+          console.log('http://'+config.provider.host+':8080/ipfs/' + version.hash)
+        }
+
         console.log('http://ipfs.io/ipfs/' + version.hash)
+        console.log()
 
         config.versions.push(version)
 
