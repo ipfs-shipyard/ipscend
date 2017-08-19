@@ -10,7 +10,7 @@ ipscend
 Install via npm
 
 ```
-$ npm install ipscend --global
+$ npm install alexstep/ipscend --global
 ```
 
 Run the CLI to show the available commands
