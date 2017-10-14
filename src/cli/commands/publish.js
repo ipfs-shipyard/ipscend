@@ -70,7 +70,9 @@ module.exports = Command.extend({
           console.log('http://'+config.provider.host+':8080/ipfs/' + version.hash)
         }
 
-        console.log('http://ipfs.io/ipfs/' + version.hash)
+        console.log('https://ipfs.io/ipfs/' + version.hash)
+        console.log(' OR ')
+        console.log('https://ipfs.infura.io/ipfs/' + version.hash)
         console.log()
 
         config.versions.push(version)
