@@ -1,10 +1,31 @@
 #! /usr/bin/env node
+
 'use strict'
 
-const ronin = require('ronin')
+const yargs = require('yargs')
+const updateNotifier = require('update-notifier')
+const readPkgUp = require('read-pkg-up')
 
-const cli = ronin(__dirname)
+const pkg = readPkgUp.sync({cwd: __dirname}).pkg
 
-// cli.autoupdate(() => {
-cli.run()
-// })
+updateNotifier({
+  pkg,
+  updateCheckInterval: 1000 * 60 * 60 * 24 * 7 // 1 week
+}).notify()
+
+const args = process.argv.slice(2)
+
+yargs
+  // .epilog(utils.ipfsPathHelp)
+  .demandCommand(1)
+  .fail((msg, err, yargs) => {
+    if (err) {
+      throw err // preserve stack
+    }
+
+    if (args.length > 0) {
+      console.log(msg)
+    }
+
+    yargs.showHelp()
+  })

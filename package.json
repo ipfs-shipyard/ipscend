@@ -3,8 +3,7 @@
   "version": "0.4.3",
   "description": "Web Application publishing made simple and distributed with IPFS ",
   "bin": {
-    "ipscend": "src/bin.js",
-    "dweb-publish": "src/bin.js"
+    "ipscend": "src/bin.js"
   },
   "scripts": {
     "lint": "aegir lint",
@@ -35,8 +34,8 @@
     "ndjson-aggregator": "~0.1.2",
     "node-static": "~0.7.10",
     "open": "~0.0.5",
-    "ronin": "~0.3.11",
-    "webshot": "~0.18.0"
+    "webshot": "~0.18.0",
+    "yargs": "^12.0.1"
   },
   "devDependencies": {
     "aegir": "^15.0.0"
