@@ -1,3 +1,5 @@
+'use strict'
+
 var Command = require('ronin').Command
 var fs = require('fs')
 var path = require('path')
@@ -14,9 +16,9 @@ module.exports = Command.extend({
     if (version) {
       return browse(version)
     }
-
+    var configPath
     try {
-      var configPath = path.resolve(process.cwd() + '/ipscend.json')
+      configPath = path.resolve(process.cwd() + '/ipscend.json')
       fs.statSync(configPath)
       browse(lastVersion())
     } catch (err) {

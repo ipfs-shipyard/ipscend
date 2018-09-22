@@ -1,14 +1,17 @@
-var Command = require('ronin').Command
-var fs = require('fs')
-var ipfsAPI = require('ipfs-api')
-var path = require('path')
+'use strict'
+
+const Command = require('ronin').Command
+const fs = require('fs')
+const ipfsAPI = require('ipfs-api')
+const path = require('path')
 
 module.exports = Command.extend({
   desc: 'Publish your project',
 
   run: function (name) {
+    let configPath
     try {
-      var configPath = path.resolve(process.cwd() + '/ipscend.json')
+      configPath = path.resolve(process.cwd() + '/ipscend.json')
       fs.statSync(configPath)
       publish()
     } catch (err) {
@@ -16,18 +19,20 @@ module.exports = Command.extend({
     }
 
     function publish () {
-      var config = JSON.parse(fs.readFileSync(configPath))
-      // TODO check if daemon is running
-      var ipfs = ipfsAPI('localhost', '5001')
+      const config = require(configPath)
+      const ipfs = ipfsAPI('localhost', '5001')
 
-      ipfs.add(config.path, { recursive: true, 'stream-channels': false }, function (err, res) {
+      ipfs.util.addFromFs(config.path, {
+        recursive: true,
+        'stream-channels': false
+      }, (err, res) => {
         if (err || !res) {
           return console.error('err', err)
         }
 
         var hash = res[res.length - 1].Hash
 
-        var duplicate = config.versions.filter(function (v) {
+        const duplicate = config.versions.filter(function (v) {
           return v.hash === hash
         })[0]
 
@@ -36,7 +41,7 @@ module.exports = Command.extend({
           return
         }
 
-        var version = {
+        const version = {
           hash: hash,
           timestamp: new Date()
         }
@@ -48,7 +53,7 @@ module.exports = Command.extend({
 
         config.versions.push(version)
 
-        var fd = fs.openSync(configPath, 'w')
+        const fd = fs.openSync(configPath, 'w')
         fs.writeSync(fd, JSON.stringify(config, null, '  '), 0, 'utf-8')
       })
     }

@@ -1,9 +1,12 @@
-var Command = require('ronin').Command
-var fs = require('fs')
-var path = require('path')
-var webshot = require('webshot')
-var ipfsAPI = require('ipfs-api')
-var open = require('open')
+'use strict'
+
+const Command = require('ronin').Command
+const fs = require('fs')
+const path = require('path')
+const webshot = require('webshot')
+const ipfsAPI = require('ipfs-api')
+const open = require('open')
+const Buffer = require('safe-buffer').Buffer
 
 module.exports = Command.extend({
   desc: 'View or generate screenshots for your application',
@@ -12,9 +15,11 @@ module.exports = Command.extend({
     gen: 'boolean'
   },
 
-  run: function (gen, name) {
+  run: (gen, name) => {
+    let configPath
+
     try {
-      var configPath = path.resolve(process.cwd() + '/ipscend.json')
+      configPath = path.resolve(process.cwd() + '/ipscend.json')
       fs.statSync(configPath)
       snapshot()
     } catch (err) {
@@ -23,29 +28,29 @@ module.exports = Command.extend({
     }
 
     function snapshot () {
-      var config = JSON.parse(fs.readFileSync(configPath))
+      const config = JSON.parse(fs.readFileSync(configPath))
       if (config.versions.length === 0) {
         return console.log('You need to publish at least once with <ipscend publish>')
       }
 
-      var ipfs = ipfsAPI('localhost', '5001')
+      const ipfs = ipfsAPI('localhost', '5001')
 
       if (!gen) {
-        ipfs.add(new Buffer(JSON.stringify(config.versions)), function (err, res) {
+        ipfs.add(Buffer.from(JSON.stringify(config.versions)), (err, res) => {
           if (err || !res) {
             return console.error('err', err)
           }
-          var previewAppHash = 'QmYH5SM9D2qhJXb6GCQ3AJbqVwecGoAxyjG25j9AskKmdc'
-          var versionsHash = res[0].Hash
-          var base = 'http://localhost:8080/ipfs/'
+          const previewAppHash = 'QmYH5SM9D2qhJXb6GCQ3AJbqVwecGoAxyjG25j9AskKmdc'
+          const versionsHash = res[0].Hash
+          const base = 'http://localhost:8080/ipfs/'
           open(base + previewAppHash + '/#' + versionsHash)
         })
         return
       }
 
       if (gen) {
-        var len = config.versions.length
-        config.versions.forEach(function (version) {
+        let len = config.versions.length
+        config.versions.forEach((version) => {
           if (!version.snapshot) {
             webshot('http://localhost:8080/ipfs/' + version.hash,
                 '/tmp/' + version.hash + '.png', {
@@ -53,19 +58,19 @@ module.exports = Command.extend({
                     width: 'all',
                     height: 'all'
                   }
-                }, function (err) {
+                }, (err) => {
                   if (err) {
                     return console.log(err)
                   }
 
-                  ipfs.add('/tmp/' + version.hash + '.png', function (err, res) {
+                  ipfs.add('/tmp/' + version.hash + '.png', (err, res) => {
                     if (err || !res) {
                       return console.error('err', err)
                     }
                     version.snapshot = res[0].Hash
                     len--
                     if (len === 0) {
-                      var fd = fs.openSync(configPath, 'w')
+                      const fd = fs.openSync(configPath, 'w')
                       fs.writeSync(fd, JSON.stringify(config, null, '  '), 0, 'utf-8')
                     }
                   })
