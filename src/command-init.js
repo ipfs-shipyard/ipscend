@@ -11,7 +11,9 @@ module.exports = (yargs) => {
         if (err) { console.log(err.message) }
 
         const config = {
-          versions: []
+          versions: [],
+          gateways: [], // Gateways for pre-loading/pushing
+          pinning: [] // Pinning services
         }
 
         config.path = path
