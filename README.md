@@ -1,76 +1,50 @@
-ipscend
-=======
+dweb-publish (previously known as ipscend)
+============
 
 [![](https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square)](http://ipn.io)
 [![](https://img.shields.io/badge/freenode-%23ipfs-blue.svg?style=flat-square)](http://webchat.freenode.net/?channels=%23ipfs)
-![Coverage](https://img.shields.io/badge/coverage-%3F-yellow.svg?style=flat-square)
-[![Deps](https://david-dm.org/diasdavid/ipscend.svg?style=flat-square)](https://david-dm.org/diasdavid/ipscend)
-[![CodeStyle](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
+![](https://img.shields.io/badge/coverage-%3F-yellow.svg?style=flat-square)
+[![](https://david-dm.org/ipfs-shipyard/dweb-publish.svg?style=flat-square)](https://david-dm.org/ipfs-shipyard/dweb-publish)
+[![](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
 
-> Web Application publishing, simple and distributed with IPFS 
+> Publish Websites and Web Applications to the DWeb using IPFS
+
+## `dweb-publish` Description and Goals
+
+Let's make publish to the DWeb super simple and fun ✨!
+
+This project started as [`ipscend`](http://daviddias.me/blog/ipscend/) and it was a fun tool at the time to get Websites on the DWeb super quick. Things like DNSLink were still recent and IPFS itself didn't support multiple formats other than the MerkleDAG.
+
+Today things are different! IPFS can now support other formats such as Git (so that you don't have to re-add files), it also has lot better APIs, the JS implementation is now fully interoperable with the Go implementation (no more need to run daemons separetly), APIs have improved a ton and there is also now dozens of Gateways and Pinning Services outthere for users to ensure that their Website stays in the network without having to run their own daemon.
+
+It is time to revamp the project and improve it so that we achieve the big goal, making the act of publishing a Website to the DWeb incredibly simple, enjoyful and functional! Below you can find the rough roadmap of the steps ahead. Want to help? Join the effort by contributing to this repo or show up at one of the [Weekly IPFS All Hands calls](https://github.com/ipfs/pm/#weekly-all-hands).
+
+### (rough) Roadmap
+
+#### v1 - Make a tool that enables Website authors and Web Developers to publish their Websites with IPFS
+
+- [ ] Refactor and update old ipscend code to use the latest and greatest IPFS APIs
+- [ ] Create an ipfs-push tool that automatically pushes the latest publish to multiple IPFS Gateways
+- [ ] Add support for IPFS Cluster pinbot so that the Website is stored
+
+#### v2 - Support git directly
+
+- [ ] Publish the Git Hash directly through IPFS using CID & IPLD. This will avoid duplicating the info that already exists on the git repo
+  - [ ] Add support to the IPFS Files API to understand Git graphs as files and folders (e.g. ipfs.io/ipfs/gitHash/public)
+
+#### v3 - Autopublish
+
+- [ ] Find .dweb files in Github repositories and make the published versions available automatically through IPFS
 
 ## Usage
 
 Install via npm
 
 ```
-$ npm install ipscend --global
+$ npm install dweb-publish --global
 ```
 
-Run the CLI to show the available commands
-
-```
-$ ipscend
-Usage: ipscend COMMAND [OPTIONS]
-
-Available commands:
-
-browse      Open your application in a browser
-init        Initialize a ipscend project
-ipfs start  Start your a local IPFS node
-preview     Preview your application before you publish it
-publish     Publish your project
-screenshot  View or generate screenshots for your application
-versions    Check each version published
-```
-
-### commands
-
-#### `ipscend browse`
-
-Opens the last published version of your application in the browser.
-
-#### `ipscend init`
-
-Initializes your project. Asks for the folder where the web application will be available and stores an `ipscend.json` object in your current path to store all the metadata it generates, such as published versions and taken screenshots.
-
-#### `ipscend ipfs start`
-
-Start and init an IPFS node (in case you don't want to install and run IPFS yourself)
-
-#### `ipscend preview`
-
-Serves your application on a local static file server, so that you can try it out before you feel ready to publish it.
-
-#### `ipscend publish`
-
-Publishes the current state of your application to IPFS and stores a reference to it.
-
-**Note:** You have to have a local IPFS node running in order to publish, check below for how to get your local IPFS node running.
-
-#### `ipscend screenshot`
-
-Opens a screenshot preview of all the published versions of your app. In order to generate the screenshots, you must first run `ipscend screenshot --gen`.
-
-![](http://zippy.gfycat.com/TameDampKob.gif)
-
-**Note:** The webapp used for this is [ipscend-screenshot-visualizer](https://github.com/diasdavid/ipscend-screenshot-visualizer).
-
-#### `ipscend versions`
-
-Prints out the published versions for the app and its respective timestamp.
-
-**Note:** In order to use this feature, you must set `API_ORIGIN=*` as an environment variable before running your IPFS node.
+### Commands
 
 ## Use IPFS to host your webpage using a standard domain (includes cool DNS trick!)
 
@@ -80,7 +54,7 @@ Every IPFS node HTTP interface checks the host header when it receives a request
 
 To make this work, simply:
 
-1. Publish your application using `ipscend publish`.
+1. Publish your application using `dweb-publish`.
 2. Save the returned hash.
 3. Find the IPFS ip addresses using `$ dig ipfs.io`. Example: 
 	
