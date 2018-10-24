@@ -1,9 +1,9 @@
 {
-  "name": "ipscend",
+  "name": "dweb-publish",
   "version": "0.4.3",
   "description": "Web Application publishing made simple and distributed with IPFS ",
   "bin": {
-    "ipscend": "src/bin.js"
+    "dweb-publish": "src/bin.js"
   },
   "scripts": {
     "lint": "aegir lint",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ipfs-shipyard/ipscend.git"
+    "url": "https://github.com/ipfs-shipyard/dweb-publish.git"
   },
   "keywords": [
     "IPFS"
@@ -24,21 +24,23 @@
   "author": "David Dias <daviddias@ipfs.io>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ipfs-shipyard/ipscend/issues"
+    "url": "https://github.com/ipfs-shipyard/dweb-publish/issues"
   },
-  "homepage": "https://github.com/ipfs-shipyard/ipscend",
+  "homepage": "https://github.com/ipfs-shipyard/dweb-publish",
   "dependencies": {
     "asking": "~0.1.2",
-    "ipfs-api": "^22.2.3",
-    "ipfsd-ctl": "~0.37.5",
+    "ipfs": "^0.32.3",
+    "ipfs-api": "^25.0.0",
+    "ipfsd-ctl": "^0.39.3",
+    "ipfsx": "~0.16.0",
     "ndjson-aggregator": "~0.1.2",
-    "node-static": "~0.7.10",
+    "node-static": "~0.7.11",
     "open": "~0.0.5",
     "webshot": "~0.18.0",
-    "yargs": "^12.0.1"
+    "yargs": "^12.0.2"
   },
   "devDependencies": {
-    "aegir": "^15.0.0"
+    "aegir": "^15.3.1"
   },
   "contributors": [
     "David Dias <daviddias.p@gmail.com>",
