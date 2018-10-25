@@ -14,7 +14,7 @@ module.exports = (options, callback) => {
     })
 
     f.spawn({
-      disposable: false
+      // disposable: false
     }, (err, ipfsd) => {
       if (err) { throw err }
 

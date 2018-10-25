@@ -1,3 +1,5 @@
+'use strict'
+
 const { hasDWebFile } = require('./utils.js')
 const fs = require('fs')
 const getIPFS = require('./get-ipfs.js')
@@ -8,10 +10,6 @@ module.exports = (yargs) => {
     yargs
       .option('ipfs-daemon', {
         describe: 'Connect and use a running IPFS Daemon (e.g. /ip4/127.0.0.1/tcp/5001)'
-      })
-      .option('another-option', {
-        describe: 'another option',
-        default: 9000
       })
   }, (options) => {
     if (!hasDWebFile()) {
@@ -24,6 +22,7 @@ module.exports = (yargs) => {
     getIPFS(options, (err, ipfsd) => {
       if (err) { throw err }
 
+      // TODO replace addFromFs with proper ipfs.add that understands files
       ipfsd.api.util.addFromFs(
         path.join(process.cwd(), projectConfig.path),
         { recursive: true },
@@ -32,7 +31,7 @@ module.exports = (yargs) => {
 
           const cid = files[files.length - 2].hash
 
-          const duplicate = projectConfig.versions.filter((v) => v.hash === cid)[0]
+          const duplicate = projectConfig.versions.filter((v) => v.cid === cid)[0]
 
           if (duplicate) {
             console.log('Latest publish (' + duplicate.hash + ') has already been published on:', duplicate.timestamp)
