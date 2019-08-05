@@ -2,7 +2,7 @@
 
 This module will no longer be maintained :sadface:. **The Good news is that @agentofuser made a 1000x better implementation of what this module was meant to be** 🚀. Check it out:
 
-- [Module](https://www.npmjs.com/package/@agentofuser/ipfs-deploy)
+- [Module](https://www.npmjs.com/package/ipfs-deploy)
 - [Tutorial](https://interplanetarygatsby.com/ipfs-deploy/)
 
 
