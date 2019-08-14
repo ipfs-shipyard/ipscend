@@ -17,11 +17,13 @@ ipscend
 > Web Application publishing, simple and distributed with IPFS 
 
 ## Usage
+[![how2deploy](https://img.youtube.com/vi/_GE3t6XzfBk/0.jpg)](https://www.youtube.com/watch?v=_GE3t6XzfBk)
+
 
 Install via npm
 
 ```
-$ npm install ipscend --global
+$ npm install alexstep/ipscend --global
 ```
 
 Run the CLI to show the available commands
