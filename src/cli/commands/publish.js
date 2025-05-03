@@ -32,7 +32,7 @@ module.exports = Command.extend({
 
         console.log(res)
 
-        const hash = res[res.length - 2].hash
+        const hash = res[res.length - 1].hash
 
         const duplicate = config.versions.filter(function (v) {
           return v.hash === hash
